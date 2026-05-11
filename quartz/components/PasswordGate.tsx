@@ -18,6 +18,7 @@ async function sha256(text: string): Promise<string> {
 
 export default (() => {
   const PasswordGate: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
+    console.log("PasswordGate rendering")
     return (
       <div id="password-gate">
         <div id="gate-card">
