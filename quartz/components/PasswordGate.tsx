@@ -108,22 +108,27 @@ export default (() => {
         })
       }
 
-      // Intercept SPA navigation — block if not authenticated
-      var origNavigate = window.spaNavigate
-      window.spaNavigate = function(url, isBack) {
-        if (sessionStorage.getItem("notes_auth") !== "true") {
-          window.location.replace("./")
-          return
-        }
-        if (origNavigate) return origNavigate.call(window, url, isBack)
-      }
-
-      // Catch SPA router's prenavigation event (fires before body swap)
-      document.addEventListener("prenav", function () {
-        if (sessionStorage.getItem("notes_auth") !== "true") {
-          window.location.replace("./")
-        }
-      })
+      // Block SPA navigation by adding a capturing listener on window that runs
+      // before the SPA router's bubbling listener. Capturing phase fires
+      // window→document→element, so this fires before the SPA router.
+      // We use stopImmediatePropagation to kill the event before bubbling.
+      window.addEventListener(
+        "click",
+        function (e) {
+          if (sessionStorage.getItem("notes_auth") !== "true") {
+            var link = e.target.closest("a")
+            if (
+              link &&
+              link.hostname === window.location.hostname &&
+              link.href.startsWith(window.location.origin)
+            ) {
+              e.stopImmediatePropagation()
+              e.preventDefault()
+            }
+          }
+        },
+        true, // capture phase
+      )
 
       // Re-check auth on every SPA navigation event
       document.addEventListener("nav", function () {
