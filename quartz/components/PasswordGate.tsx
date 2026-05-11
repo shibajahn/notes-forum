@@ -106,16 +106,24 @@ export default (() => {
             document.getElementById("gate-password").value = ""
           }
         })
-        // Intercept SPA navigation clicks — always check current auth state
-        document.addEventListener("click", function (e) {
-          var link = e.target.closest("a")
-          if (link && link.hostname === window.location.hostname && link.href.startsWith(window.location.origin)) {
-            if (sessionStorage.getItem("notes_auth") !== "true") {
-              e.preventDefault()
-            }
-          }
-        })
       }
+
+      // Intercept SPA navigation — block if not authenticated
+      var origNavigate = window.spaNavigate
+      window.spaNavigate = function(url, isBack) {
+        if (sessionStorage.getItem("notes_auth") !== "true") {
+          window.location.replace("./")
+          return
+        }
+        if (origNavigate) return origNavigate.call(window, url, isBack)
+      }
+
+      // Catch SPA router's prenavigation event (fires before body swap)
+      document.addEventListener("prenav", function () {
+        if (sessionStorage.getItem("notes_auth") !== "true") {
+          window.location.replace("./")
+        }
+      })
 
       // Re-check auth on every SPA navigation event
       document.addEventListener("nav", function () {
