@@ -59,15 +59,29 @@ export default (() => {
         return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
       }
 
-      // Auth check on EVERY page — redirect unauthenticated users to index
-      if (sessionStorage.getItem("notes_auth") !== "true") {
+      // Auth check function — runs on every page load AND every SPA navigation
+      function checkAuth() {
+        if (sessionStorage.getItem("notes_auth") === "true") {
+          var gate = document.getElementById("password-gate")
+          if (gate) gate.style.display = "none"
+          return true
+        }
+        // Not authenticated
         var gate = document.getElementById("password-gate")
         if (gate) gate.style.display = "block"
+        // If on a non-index page, redirect to index
         if (window.location.pathname !== "" && window.location.pathname !== "/") {
           window.location.replace("./")
-          return
+          return false
         }
-        // On index page: set up the form
+        return false
+      }
+
+      // Run auth check immediately
+      var authed = checkAuth()
+
+      if (!authed) {
+        // On index page: set up the login form
         var form = document.getElementById("gate-form")
         var error = document.getElementById("gate-error")
         if (!form || !error) return
@@ -85,13 +99,14 @@ export default (() => {
           if (hash === USERS[username]) {
             sessionStorage.setItem("notes_auth", "true")
             sessionStorage.setItem("notes_user", username)
+            var gate = document.getElementById("password-gate")
             if (gate) gate.style.display = "none"
           } else {
             error.style.display = "block"
             document.getElementById("gate-password").value = ""
           }
         })
-        // Intercept SPA navigation clicks
+        // Intercept SPA navigation clicks — always check current auth state
         document.addEventListener("click", function (e) {
           var link = e.target.closest("a")
           if (link && link.hostname === window.location.hostname && link.href.startsWith(window.location.origin)) {
@@ -104,13 +119,12 @@ export default (() => {
 
       // Re-check auth on every SPA navigation event
       document.addEventListener("nav", function () {
-        if (sessionStorage.getItem("notes_auth") !== "true") {
-          var gate = document.getElementById("password-gate")
-          if (gate) gate.style.display = "block"
-          if (window.location.pathname !== "" && window.location.pathname !== "/") {
-            window.location.replace("./")
-          }
-        }
+        checkAuth()
+      })
+
+      // Handle browser back/forward
+      window.addEventListener("popstate", function () {
+        checkAuth()
       })
     })()
   `
