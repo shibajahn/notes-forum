@@ -101,6 +101,17 @@ export default (() => {
           }
         })
       }
+
+      // Re-check auth on every SPA navigation event
+      document.addEventListener("nav", function () {
+        if (sessionStorage.getItem("notes_auth") !== "true") {
+          var gate = document.getElementById("password-gate")
+          if (gate) gate.style.display = "block"
+          if (window.location.pathname !== "" && window.location.pathname !== "/") {
+            window.location.replace("./")
+          }
+        }
+      })
     })()
   `
 
