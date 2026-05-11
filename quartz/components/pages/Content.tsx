@@ -4,6 +4,7 @@ import { QuartzComponentConstructor, QuartzComponentProps } from "../types"
 import PasswordGate from "../PasswordGate"
 
 const Content: QuartzComponent = ({ fileData, tree }: QuartzComponentProps) => {
+  console.log("DEBUG Content page slug:", JSON.stringify(fileData.slug))
   if (fileData.slug === "index" || fileData.slug === "") {
     return <PasswordGate />
   }
