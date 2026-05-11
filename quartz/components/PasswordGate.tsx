@@ -59,63 +59,48 @@ export default (() => {
         return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
       }
 
-      // Already authenticated this session
-      if (sessionStorage.getItem("notes_auth") === "true") {
+      // Auth check on EVERY page — redirect unauthenticated users to index
+      if (sessionStorage.getItem("notes_auth") !== "true") {
         var gate = document.getElementById("password-gate")
-        if (gate) gate.style.display = "none"
-        return
-      }
-
-      var form = document.getElementById("gate-form")
-      var error = document.getElementById("gate-error")
-      var gate = document.getElementById("password-gate")
-
-      if (!form || !error || !gate) return
-
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault()
-        var username = document.getElementById("gate-username").value.trim().toLowerCase()
-        var passwordInput = document.getElementById("gate-password").value
-
-        if (!USERS[username]) {
-          error.style.display = "block"
-          document.getElementById("gate-username").value = ""
-          document.getElementById("gate-password").value = ""
+        if (gate) gate.style.display = "block"
+        if (window.location.pathname !== "" && window.location.pathname !== "/") {
+          window.location.replace("./")
           return
         }
-
-        var hash = await sha256(passwordInput)
-
-        if (hash === USERS[username]) {
-          sessionStorage.setItem("notes_auth", "true")
-          sessionStorage.setItem("notes_user", username)
-          gate.style.display = "none"
-        } else {
-          error.style.display = "block"
-          document.getElementById("gate-password").value = ""
-        }
-      })
-
-      // Intercept internal navigation
-      document.addEventListener("click", function (e) {
-        var link = e.target.closest("a")
-        if (
-          link &&
-          link.hostname === window.location.hostname &&
-          link.href.startsWith(window.location.origin)
-        ) {
-          if (sessionStorage.getItem("notes_auth") !== "true") {
-            e.preventDefault()
+        // On index page: set up the form
+        var form = document.getElementById("gate-form")
+        var error = document.getElementById("gate-error")
+        if (!form || !error) return
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault()
+          var username = document.getElementById("gate-username").value.trim().toLowerCase()
+          var passwordInput = document.getElementById("gate-password").value
+          if (!USERS[username]) {
+            error.style.display = "block"
+            document.getElementById("gate-username").value = ""
+            document.getElementById("gate-password").value = ""
+            return
           }
-        }
-      })
-
-      // Handle browser back/forward
-      window.addEventListener("popstate", function () {
-        if (sessionStorage.getItem("notes_auth") !== "true") {
-          gate.style.display = "block"
-        }
-      })
+          var hash = await sha256(passwordInput)
+          if (hash === USERS[username]) {
+            sessionStorage.setItem("notes_auth", "true")
+            sessionStorage.setItem("notes_user", username)
+            if (gate) gate.style.display = "none"
+          } else {
+            error.style.display = "block"
+            document.getElementById("gate-password").value = ""
+          }
+        })
+        // Intercept SPA navigation clicks
+        document.addEventListener("click", function (e) {
+          var link = e.target.closest("a")
+          if (link && link.hostname === window.location.hostname && link.href.startsWith(window.location.origin)) {
+            if (sessionStorage.getItem("notes_auth") !== "true") {
+              e.preventDefault()
+            }
+          }
+        })
+      }
     })()
   `
 
