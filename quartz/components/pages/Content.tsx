@@ -4,7 +4,7 @@ import { QuartzComponentConstructor, QuartzComponentProps } from "../types"
 import PasswordGate from "../PasswordGate"
 
 const Content: QuartzComponent = ({ fileData, tree }: QuartzComponentProps) => {
-  if (fileData.slug === "index") {
+  if (fileData.slug === "index" || fileData.slug === "") {
     return <PasswordGate />
   }
   const content = htmlToJsx(fileData.filePath!, tree) as ComponentChildren
