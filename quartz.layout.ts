@@ -4,25 +4,7 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [
-    Component.ConditionalRender({
-      component: Component.Comments({
-        provider: "giscus",
-        options: {
-          repo: "shibajahn/notes-forum",
-          repoId: "R_kwDOXXXXXXXXXXXX",
-          category: "Notes",
-          categoryId: "CATXXXXXXXXXXXXXXXXX",
-          mapping: "title",
-          strict: true,
-          reactionsEnabled: true,
-          inputPosition: "bottom",
-          lang: "en",
-        },
-      }),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
-  ],
+  afterBody: [],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/shibajahn/notes-forum",
