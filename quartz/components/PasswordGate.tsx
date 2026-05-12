@@ -66,14 +66,10 @@ export default (() => {
           if (gate) gate.style.display = "none"
           return true
         }
-        // Not authenticated
+        // Not authenticated — show gate regardless of path
+        // (SPA click interceptor blocks navigation to protected pages)
         var gate = document.getElementById("password-gate")
         if (gate) gate.style.display = "block"
-        // If on a non-index page, redirect to index
-        if (window.location.pathname !== "" && window.location.pathname !== "/") {
-          window.location.replace("./")
-          return false
-        }
         return false
       }
 
