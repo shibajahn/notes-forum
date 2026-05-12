@@ -6,6 +6,7 @@ import style from "./styles/passwordGate.scss"
 // echo -n "password" | sha256sum | cut -d' ' -f1
 const USERS: Record<string, string> = {
   shibajahn: "91b9db45eefb82bcab3ec0f77bc32c4f6ebeb5a7233c8e580c180522d636c8b7",
+  ai2: "ad3b8d0a2feac7e7502be60b8185f491399204b0d086cc7a0f07c924e76f0531",
 }
 
 async function sha256(text: string): Promise<string> {
