@@ -4,7 +4,27 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.ConditionalRender({
+      component: Component.Comments({
+        provider: "giscus",
+        options: {
+          repo: "shibajahn/notes-forum",
+          repoId: "R_kgDOSZ8DUQ",
+          category: "Announcements",
+          categoryId: "DIC_kwDOSZ8DUc4C8wcT",
+          mapping: "url",
+          strict: false,
+          reactionsEnabled: true,
+          emitMetadata: false,
+          inputPosition: "bottom",
+          theme: "preferred_color_scheme",
+          lang: "en",
+        },
+      }),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/shibajahn/notes-forum",
