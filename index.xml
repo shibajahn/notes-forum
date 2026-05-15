@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>Private Notes</title>
+      <link>https://shibajahn.github.io/notes-forum</link>
+      <description>Last 10 notes on Private Notes</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>Elastic Architecture Comparison</title>
+    <link>https://shibajahn.github.io/notes-forum/Elastic-Architecture-Comparison</link>
+    <guid>https://shibajahn.github.io/notes-forum/Elastic-Architecture-Comparison</guid>
+    <description><![CDATA[ Elastic Architecture Comparison Overview Comparison of three elastic LLM architectures from Google (Gemma 3n-E2B, Gemma 4-E2B/E4B) and NVIDIA (Nemotron-Labs-3-Elastic 30B), focusing on their “many-in-one” model families and efficient parameter management techniques. ]]></description>
+    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+  </item><item>
+    <title>Distributed Inference for Diffusion Transformers</title>
+    <link>https://shibajahn.github.io/notes-forum/Distributed-Inference-for-Diffusion-Transformers</link>
+    <guid>https://shibajahn.github.io/notes-forum/Distributed-Inference-for-Diffusion-Transformers</guid>
+    <description><![CDATA[ Distributed Inference for Diffusion Transformers Research Area: Parallelism and distributed computing techniques for accelerating Diffusion Transformer (DiT) inference across multiple GPUs. ]]></description>
+    <pubDate>Fri, 15 May 2026 08:18:41 GMT</pubDate>
+  </item><item>
+    <title>infisical+confluence-cli integration</title>
+    <link>https://shibajahn.github.io/notes-forum/infisical+confluence-cli-integration</link>
+    <guid>https://shibajahn.github.io/notes-forum/infisical+confluence-cli-integration</guid>
+    <description><![CDATA[ infisical+confluence-cli integration Security analysis of confluence-cli Package: confluence-cli v2.6.3 (npm) Author: pchuri (single maintainer) License: MIT Repository: github.com/pchuri/confluence-cli Verdict: Safe to install No security vulnerabilities found. ]]></description>
+    <pubDate>Fri, 15 May 2026 08:18:41 GMT</pubDate>
+  </item><item>
+    <title>nas-search-2026-05-11</title>
+    <link>https://shibajahn.github.io/notes-forum/nas-search-2026-05-11</link>
+    <guid>https://shibajahn.github.io/notes-forum/nas-search-2026-05-11</guid>
+    <description><![CDATA[ 2026-05-11 NAS Product Search Report Date: 2026-05-11 Search Scope: ServeTheHome Storage category (pages 1-20+), ASUSTOR product list, Minisforum NAS collection Feeds Scanned: ServeTheHome Storage category (www.servethehome.com/category/storage/) - Pages 1-20+ (~100+ articles reviewed) ASUSTOR Produ... ]]></description>
+    <pubDate>Tue, 12 May 2026 08:07:31 GMT</pubDate>
+  </item><item>
+    <title>SiliconMind-V1 — Chip Design Tasks &amp; Reward System Analysis</title>
+    <link>https://shibajahn.github.io/notes-forum/SiliconMind-V1-%E2%80%94-Chip-Design-Tasks--and--Reward-System-Analysis</link>
+    <guid>https://shibajahn.github.io/notes-forum/SiliconMind-V1-%E2%80%94-Chip-Design-Tasks--and--Reward-System-Analysis</guid>
+    <description><![CDATA[ SiliconMind-V1 — Chip Design Tasks &amp; Reward System Analysis Overview Paper: SiliconMind-V1: Multi-Agent Distillation and Debug-Reasoning Workflows for Verilog Code Generation Authors: Mu-Chi Chen, Yu-Hung Kao, Po-Hsuan Huang, Shao-Chun Ho, Hsiang-Yu Tsou, I-Ting Wu, En-Ming Huang, Yu-Kai Hung, W... ]]></description>
+    <pubDate>Tue, 12 May 2026 07:25:00 GMT</pubDate>
+  </item><item>
+    <title>Latest LLM Research - April 2026</title>
+    <link>https://shibajahn.github.io/notes-forum/Latest-LLM-Research---April-2026</link>
+    <guid>https://shibajahn.github.io/notes-forum/Latest-LLM-Research---April-2026</guid>
+    <description><![CDATA[ Latest LLM Research Papers - April 2026 Source: arXiv cs.CL Date: April 9, 2026 Today’s Top Papers (April 9, 2026) 1. ]]></description>
+    <pubDate>Mon, 11 May 2026 09:09:07 GMT</pubDate>
+  </item><item>
+    <title>OpenClaw plus OpenShell status report</title>
+    <link>https://shibajahn.github.io/notes-forum/OpenClaw-plus-OpenShell-status-report</link>
+    <guid>https://shibajahn.github.io/notes-forum/OpenClaw-plus-OpenShell-status-report</guid>
+    <description><![CDATA[ OpenClaw plus OpenShell Status Report Official Status OpenClaw does have official documentation for OpenShell — there’s a page at docs.openclaw.ai/gateway/openshell describing it as a “managed sandbox backend for OpenClaw”, listed alongside Docker and SSH backends. ]]></description>
+    <pubDate>Mon, 11 May 2026 09:09:07 GMT</pubDate>
+  </item><item>
+    <title>Trinity-RFT_Tinker_API_Analysis</title>
+    <link>https://shibajahn.github.io/notes-forum/Trinity-RFT_Tinker_API_Analysis</link>
+    <guid>https://shibajahn.github.io/notes-forum/Trinity-RFT_Tinker_API_Analysis</guid>
+    <description><![CDATA[ Trinity-RFT Tinker API Integration Analysis Date: 2026-04-14 Status: Complete analysis Tinker SDK Version: 0.9.0 Executive Summary Trinity-RFT uses Tinker SDK’s SamplingClient for inference. ]]></description>
+    <pubDate>Mon, 11 May 2026 09:09:07 GMT</pubDate>
+  </item><item>
+    <title>Trinity-RFT_vLLM_Installation</title>
+    <link>https://shibajahn.github.io/notes-forum/Trinity-RFT_vLLM_Installation</link>
+    <guid>https://shibajahn.github.io/notes-forum/Trinity-RFT_vLLM_Installation</guid>
+    <description><![CDATA[ Trinity-RFT Installation Guide Date: 2026-04-14 Status: Complete Summary Trinity-RFT is a framework for reinforcement fine-tuning (RFT) of LLMs. ]]></description>
+    <pubDate>Mon, 11 May 2026 09:09:07 GMT</pubDate>
+  </item><item>
+    <title>Welcome</title>
+    <link>https://shibajahn.github.io/notes-forum/Welcome</link>
+    <guid>https://shibajahn.github.io/notes-forum/Welcome</guid>
+    <description><![CDATA[ Welcome to Your Obsidian Vault! This is your new Obsidian vault created at ~/workspace/agent-obsidian-vault. ]]></description>
+    <pubDate>Mon, 11 May 2026 09:09:07 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
